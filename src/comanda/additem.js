@@ -12,8 +12,8 @@ export class AddItem extends Creator{
             <div id="add-item" class="modal">
               <div class="modal-content">
                 <m-row>
-                    <m-input col="s6" id="opt" >OPT</m-input>
-                    <m-input col="s6" id="qtd" type="number" >QTD</m-input>
+                    <m-input col="s6" id="opt" type="number" tabindex="0">OPT</m-input>
+                    <m-input col="s6" id="qtd" type="number" edit="1"  tabindex="1"></m-input>
                 </m-row>
               <div>
               
@@ -25,8 +25,18 @@ export class AddItem extends Creator{
     }
     callBack(){
       const modal=document.getElementById('add-item');
-      const qtdInput=this.querySelector('#qtd>input');
-      qtdInput.value="1";
+     const opt=document.getElementById('opt');
+     const qtd=document.getElementById('qtd');
+
+     opt.addEventListener("keypress",(e)=>{
+        if (e === 13) { 
+            qtd.focus();
+          }
+     })
+        
+
+      
+       
       
     }
 }
